@@ -1,13 +1,13 @@
 #include <stdint.h>
 
 /* Base Addresses */
-#define PERIPH_BASE     0x40000000U // + for address, | for mask
+#define PERIPH_BASE     0x40000000U
 #define APB2PERIPH_BASE (PERIPH_BASE + 0x10000U)
 #define GPIOC_BASE      (APB2PERIPH_BASE + 0x1000U)
 
 /* RCC Register Addresses */
 #define RCC             (PERIPH_BASE + 0x21000U)
-#define RCC_APB2ENR     (*(volatile uint32_t *)(RCC + 0x18U)) // treat number as the address of a variable
+#define RCC_APB2ENR     (*(volatile uint32_t *)(RCC + 0x18U))
 
 /* GPIOC Peripheral Register Struct */
 typedef struct

@@ -1,7 +1,5 @@
 # Blue Pill Bare Metal Blink Led
 
-Bare-metal firmware for the **STM32 Blue Pill** (`STM32F103C8`, ARM Cortex-M3) without HAL.
-
 ---
 
 ## What the program does

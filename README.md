@@ -92,8 +92,8 @@ RCC_APB2ENR |= GPIOC_CLOCK;  // set bit 4 → clock on
 
 | Offset | Register | Role |
 |---|---|---|
-| `0x00` | `CRL` | config for pins 0–7 |
-| `0x04` | `CRH` | config for pins 8–15 |
+| `0x00` | `CRL` | config for pins 0-7 |
+| `0x04` | `CRH` | config for pins 8-15 |
 | `0x08` | `IDR` | input data |
 | `0x0C` | `ODR` | output data |
 | `0x10` | `BSRR` | atomic set/reset |
@@ -117,16 +117,16 @@ typedef struct
 
 ### 4. Configure PC13 as an output (`CRH`)
 
-PC13 is pin **13**, so it lives in **`CRH`** (pins 8–15).
+PC13 is pin **13**, so it lives in **`CRH`** (pins 8-15).
 
 In the reference manual, each pin uses **4 bits** in `CRL`/`CRH`:
 
-| Field | Bits (within the pin’s nibble) | Meaning |
+| Field | Bits (within the pin's nibble) | Meaning |
 |---|---|---|
 | `MODE` | [1:0] | `00` = input, `01`/`10`/`11` = output speed |
 | `CNF` | [3:2] | for output: `00` = push-pull, `01` = open-drain |
 
-Pin 13’s nibble starts at bit **20** → bits **[23:20]**.
+Pin 13's nibble starts at bit **20** → bits **[23:20]**.
 
 For a 2 MHz push-pull output: `MODE = 10`, `CNF = 00` → nibble value `0x2`.
 

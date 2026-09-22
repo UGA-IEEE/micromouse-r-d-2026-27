@@ -1,7 +1,5 @@
 # Blue Pill Bare Metal Blink Led
 
----
-
 ## What the program does
 
 `src/main.c` blinks the onboard LED on **PC13**.

@@ -158,8 +158,6 @@ GPIOC->ODR ^= LED_PIN;  // flip bit 13 each loop
 
 At reset, the CPU loads the stack pointer and `Reset_Handler` from flash, copies initialized data, zeros BSS, then calls `main`.
 
----
-
 ## Build and flash
 
 **Tools:** `arm-none-eabi-gcc`, OpenOCD, ST-Link.

@@ -25,8 +25,6 @@ On most Blue Pills the LED is **active-low** (writing `1` turns it off, `0` turn
     └─ GPIOC->ODR ^= LED_PIN     toggle LED
 ```
 
----
-
 ## Docs you need
 
 ST publishes two main documents. Use both:
@@ -39,8 +37,6 @@ ST publishes two main documents. Use both:
 For this blink, almost everything comes from **RM0008**.
 
 In the PDF, search for the register names like `APB2ENR` and `GPIOx_CRH`.
-
----
 
 ## How to find peripherals in the reference manual
 
@@ -150,8 +146,6 @@ GPIOC->ODR |= LED_PIN;       // drive pin high (LED off)
 ```c
 GPIOC->ODR ^= LED_PIN;  // flip bit 13 each loop
 ```
-
----
 
 ## Project layout
 

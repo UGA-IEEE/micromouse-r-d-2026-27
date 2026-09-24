@@ -33,11 +33,11 @@ void gpio_set(gpio_x *gpio, uint8_t pinNumber, gpio_level level) {
 
     /*  -- Testing ODR --
     switch (level) {
-        case HIGH:
+        case GPIO_HIGH:
             gpio->ODR &= ~(1U << pinNumber);
             gpio->ODR |= (1U << pinNumber);
             break;
-        case LOW:
+        case GPIO_LOW:
             gpio->BRR = (1U << pinNumber);
             break;
         default:
@@ -47,11 +47,11 @@ void gpio_set(gpio_x *gpio, uint8_t pinNumber, gpio_level level) {
 
     /* -- Testing BSRR -- */
     switch (level) {
-        case HIGH:
+        case GPIO_HIGH:
             gpio->BSRR = (1U << pinNumber);
             break;
 
-        case LOW:
+        case GPIO_LOW:
             gpio->BSRR = (1U << (pinNumber + 16));
             break;
 
@@ -62,7 +62,11 @@ void gpio_set(gpio_x *gpio, uint8_t pinNumber, gpio_level level) {
 
 // Reads IDR
 gpio_level gpio_read(gpio_x *gpio, uint8_t pinNumber) {
+    if (pinNumber > 15){return -99;} // add success/failure enum in future?
 
+    int returnedLevel = (gpio->IDR & (1U << pinNumber));
+
+    return (gpio_level)(returnedLevel >> pinNumber);
 }
 
 

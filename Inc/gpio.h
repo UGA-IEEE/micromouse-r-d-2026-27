@@ -14,7 +14,7 @@
 
 
 typedef enum {
-    LOW, HIGH
+    GPIO_LOW, GPIO_HIGH
 } gpio_level;
 
 

@@ -23,10 +23,11 @@
 #define RCC_CIR           (volatile uint32_t *)(RCC + R_REGISTER_OFFSET * 2)
 #define RCC_APB2RSTR      (volatile uint32_t *)(RCC + R_REGISTER_OFFSET * 3)
 #define RCC_APB1RSTR      (volatile uint32_t *)(RCC + R_REGISTER_OFFSET * 4)
-#define RCC_APB2ENR       (volatile uint32_t *)(RCC + R_REGISTER_OFFSET * 5)
-#define RCC_APB1ENR       (volatile uint32_t *)(RCC + R_REGISTER_OFFSET * 6)
-#define RCC_BDCR          (volatile uint32_t *)(RCC + R_REGISTER_OFFSET * 7)
-#define RCC_CSR           (volatile uint32_t *)(RCC + R_REGISTER_OFFSET * 8)
+#define RCC_AHBENR        (volatile uint32_t *)(RCC + R_REGISTER_OFFSET * 5)
+#define RCC_APB2ENR       (volatile uint32_t *)(RCC + R_REGISTER_OFFSET * 6)
+#define RCC_APB1ENR       (volatile uint32_t *)(RCC + R_REGISTER_OFFSET * 7)
+#define RCC_BDCR          (volatile uint32_t *)(RCC + R_REGISTER_OFFSET * 8)
+#define RCC_CSR           (volatile uint32_t *)(RCC + R_REGISTER_OFFSET * 9)
 
 
 // ADC Addresses & Offsets
@@ -47,7 +48,7 @@
 #define USART3_PERIPHERAL (APB1_BUS + USART3_OFFSET)
 
 // GPIO Port Addresses
-#define PORT_OFFSET       (0x400)
+#define PORT_OFFSET       (0x400) // 0x4001 0000
 #define PORT_A_PERIPHERAL (APB2_BUS + (PORT_OFFSET * 2))
 
 #define PORT_B_PERIPHERAL (APB2_BUS + (PORT_OFFSET * 3))

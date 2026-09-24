@@ -15,7 +15,7 @@ void gpio_init(gpio_x *gpio, uint8_t pinNumber, uint8_t mode, uint8_t config) {
     *RCC_APB2ENR |= (1U << bitToSet);
 
     /* -- Set MODE & Config for GPIO port X -- */
-    uint8_t totalConfig = (config << 2U) | mode;
+    uint32_t totalConfig = (config << 2U) | mode;
 
     /* -- Clear MODE & Config Bits then Set -- */
     if (pinNumber > 7) {
@@ -25,19 +25,34 @@ void gpio_init(gpio_x *gpio, uint8_t pinNumber, uint8_t mode, uint8_t config) {
         gpio->CRL &= ~(((1U << 4) - 1) << (pinNumber * 4U));
         gpio->CRL |= (totalConfig << (pinNumber * 4U));
     }
-}
+} 
 
-// Modifies BSRR
+/* -- Sets Output level of GPIO Pin X High or Low -- */
 void gpio_set(gpio_x *gpio, uint8_t pinNumber, gpio_level level) {
     if (pinNumber > 15) return;
 
+    /*  -- Testing ODR --
     switch (level) {
         case HIGH:
-            gpio->BSRR = (uint32_t)(1U << pinNumber);
+            gpio->ODR &= ~(1U << pinNumber);
+            gpio->ODR |= (1U << pinNumber);
+            break;
+        case LOW:
+            gpio->BRR = (1U << pinNumber);
+            break;
+        default:
+            break;
+    }
+    */
+
+    /* -- Testing BSRR -- */
+    switch (level) {
+        case HIGH:
+            gpio->BSRR = (1U << pinNumber);
             break;
 
         case LOW:
-            gpio->BSRR = (uint32_t)(1U << (pinNumber + 16));
+            gpio->BSRR = (1U << (pinNumber + 16));
             break;
 
         default:
@@ -46,7 +61,7 @@ void gpio_set(gpio_x *gpio, uint8_t pinNumber, gpio_level level) {
 }
 
 // Reads IDR
-void gpio_read(gpio_x *gpio, uint8_t pinNumber) {
+gpio_level gpio_read(gpio_x *gpio, uint8_t pinNumber) {
 
 }
 

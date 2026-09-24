@@ -6,10 +6,10 @@
 
 /*                             See STM32103xx Reference Manual                                    */
 
-#define GPIOA ((gpio_x *) PORT_A_PERIPHERAL)
-#define GPIOB ((gpio_x *) PORT_B_PERIPHERAL)
-#define GPIOC ((gpio_x *) PORT_C_PERIPHERAL)
-#define GPIOD ((gpio_x *) PORT_D_PERIPHERAL)
+#define GPIOA ((gpio_x *)(PORT_A_PERIPHERAL))
+#define GPIOB ((gpio_x *)(PORT_B_PERIPHERAL))
+#define GPIOC ((gpio_x *)(PORT_C_PERIPHERAL))
+#define GPIOD ((gpio_x *)(PORT_D_PERIPHERAL))
 
 
 
@@ -35,11 +35,11 @@ typedef enum {
 // Set RCC
 void gpio_init(gpio_x *gpio, uint8_t pinNumber, uint8_t mode, uint8_t config);
 
-// Modifies BSRR
+// 
 void gpio_set(gpio_x *gpio, uint8_t pinNumber, gpio_level level);
 
 // Reads IDR
-void gpio_read(gpio_x *gpio, uint8_t pinNumber);
+gpio_level gpio_read(gpio_x *gpio, uint8_t pinNumber);
 
 
 
